@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snacks Lifetime Supply Calculator</title>
+</head>
+<body>
+  <script>
+    var age = prompt("Enter your age:");
+    var maxAge = prompt("Enter max age:");
+    var numPerDay = prompt("Enter the number per day:");
+
+    var totalRequired = (numPerDay * 365) * (maxAge - age);
+
+    if (confirm("Are you sure?")) {
+      document.write("You will need " + totalRequired + " Piattos snacks to last you until the ripe old age of " + maxAge + ".<br><br>");
+      document.write("References:<br>");
+      document.write("W3Schools.com. (n.d.). <a href='https://www.w3schools.com/js/js_examples.asp'>https://www.w3schools.com/js/js_examples.asp</a>");
+    } else {
+      alert("Run the code again");
+    }
+  </script>
+</body>
+</html>
