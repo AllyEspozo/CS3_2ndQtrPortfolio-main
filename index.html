@@ -1,32 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alijah's Portfolio</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 100%;
+      padding: 20px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    nav {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: #0078ff;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <section class="w3-container">
-   <h1>Links to the works and projects of Alijah Lucas Espinoza from 9-Rubidium </h1>
-   <nav>
-    <ul>
-      <li><a href="./public/Q1_1stGraded.html"> First Graded Exercise </a></li>
-    </ul>
-    <ul>
-      <li><a href="./public/Q11stNGRubidiumEspinoza.html"> First Non-Graded Exercise </a></li>
-    </ul>
-    <ul>
-      <li><a href="./public/Q12GRubidiumEspinoza.html"> Second Graded Exercise </a></li> 
-    </ul>
-    <ul>
-      <li><a href="./public/Q13GRubidiumEspinoza.html"> Third Graded Exercise </a></li>
-    </ul>
-    <ul>
-      <li><a href="./public/Q1BonusGame.html"> Bonus Game Activity </a></li>
-    </ul>
-    <ul>
-      <li><a href="./public/reflections.md"> 1st Quarter End of Lessons Reflections </a></li>
-    </ul>
-   </nav>
-  </section>
+  <header>
+    <h1>Alijah Lucas Espinoza — PSHS 9-Rubidium Portfolio</h1>
+  </header>
+
+  <main>
+    <nav>
+      <a href="./public/Q1_1stGraded.html">First Graded Exercise</a>
+      <a href="./public/Q11stNGRubidiumEspinoza.html">First Non-Graded Exercise</a>
+      <a href="./public/Q12GRubidiumEspinoza.html">Second Graded Exercise</a>
+      <a href="./public/Q13GRubidiumEspinoza.html">Third Graded Exercise</a>
+      <a href="./public/Q1BonusGame.html">Bonus Game Activity</a>
+      <a href="./public/reflections.md">1st Quarter Reflections</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>© 2025 Alijah Lucas Espinoza | PSHS-MC 9-Rubidium</p>
+  </footer>
 </body>
 </html>
+
