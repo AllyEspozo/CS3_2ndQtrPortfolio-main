@@ -4,78 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alijah's Portfolio</title>
-  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+  <meta name="description" content="The 2nd Quarter Portfolio of Alijah Espinoza for Computer Science 2">
+  <meta name="author" content="Alijah Lucas P. Espinoza">
+  <link rel="icon" type="image/png" href="https://png.pngtree.com/png-vector/20240204/ourmid/pngtree-3d-symbol-color-png-image_11614167.png">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
-
     body {
-      background: linear-gradient(to right, #4facfe, #00f2fe);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: aqua;
       color: #222;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       min-height: 100vh;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
     }
 
     header {
-      background-color: rgba(255, 255, 255, 0.2);
-      width: 100%;
-      padding: 20px 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(5px);
+      background-color: #00bfff;
+      color: black;
+      padding: 12px 0;
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-
-    nav {
-      margin-top: 30px;
+    main {
+      flex: 1;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      align-items: center;
+      padding: 40px 0;
     }
 
     nav a {
       text-decoration: none;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 15px 25px;
-      border-radius: 12px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    nav a:hover {
-      background-color: white;
+      background: white;
       color: #0078ff;
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      padding: 14px 28px;
+      border-radius: 8px;
     }
 
     footer {
-      margin-top: auto;
-      padding: 20px;
-      color: rgba(255,255,255,0.8);
-      font-size: 0.9rem;
+      background-color: #00bfff;
+      color: black;
+      padding: 12px 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>The 2nd Quarter Portfolio of Alijah Lucas P. Espinoza From 9-Rubidium</h1>
+    <h1>2nd Quarter Portfolio | Alijah Lucas P. Espinoza (9-Rubidium)</h1>
   </header>
 
   <main>
@@ -85,7 +60,13 @@
   </main>
 
   <footer>
-    <p>© 2025 Alijah Lucas Espinoza | PSHS-MC 9-Rubidium</p>
+        <p class="copyright">
+        &copy; <span id="year"></span> Alijah Lucas P. Espinoza. All rights reserved.
+    </p>
+
+<script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+</script>
   </footer>
 </body>
 </html>
