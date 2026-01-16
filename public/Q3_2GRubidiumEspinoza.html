@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Centralized Club Application Form</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Pisay Centralized Club Application Form</title>
+  <meta name="description" content="Club Application Form">
+  <meta name="author" content="Alijah Lucas P. Espinoza">
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-color: blue;
     }
 
     form {
         width: 600px;
         margin: 30px auto;
         padding: 20px;
-        background-color: #ffffff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        background-color: lightskyblue;
+        border: 1px solid lightslategray;
     }
 
     fieldset {
@@ -45,14 +46,14 @@
     }
 
     input:focus, select:focus, textarea:focus {
-        background-color: #e6f3ff;
-        border: 2px solid #0077cc;
+        background-color: gainsboro;
+        border: 2px solid lightseagreen;
         outline: none;
     }
 
     .error {
         border: 2px solid red;
-        background-color: #ffe6e6;
+        background-color: salmon;
     }
 
     .buttons {
@@ -67,15 +68,15 @@
 
 <script>
     function confirmSubmit() {
-        return confirm("Are you sure you want to submit this application?");
+        return confirm("Are you sure you want to submit this application form?");
     }
 
     function confirmReset() {
-        return confirm("Are you sure you want to reset all entered information?");
+        return confirm("Are you sure you want to reset all inputted information?");
     }
 
     function checkEmpty(element) {
-        if (element.value.trim() === "") {
+        if (element.value.trim() == "") {
             element.classList.add("error");
         } else {
             element.classList.remove("error");
@@ -93,12 +94,12 @@
 
         <label>
             Student ID:
-            <input type="number" name="student_id" required onblur="checkEmpty(this)">
+            <input type="number" name="id" required onblur="checkEmpty(this)">
         </label>
 
         <label>
             Full Name:
-            <input type="text" name="full_name" required onblur="checkEmpty(this)">
+            <input type="text" name="name" required onblur="checkEmpty(this)">
         </label>
 
         <label>
@@ -143,16 +144,16 @@
             Preferred Organization / Club:
             <select name="club" required>
                 <option value="">-- Select Club --</option>
-                <option value="sci">Science Club</option>
-                <option value="math">Math Society</option>
-                <option value="arts">Creative Arts Guild</option>
-                <option value="tech">Technology Circle</option>
-                <option value="env">Environmental Alliance</option>
+                <option value="science">ASTROSOC</option>
+                <option value="math">MATH CLUB</option>
+                <option value="national">PSHS-MC MUN</option>
+                <option value="debate">INVICTUS</option>
+                <option value="chess">ANIMO CHESS CLUB</option>
             </select>
         </label>
 
         <label>
-            Why do you want to join:
+            Why do you want to join?
             <textarea name="reason" required onblur="checkEmpty(this)"></textarea>
         </label>
     </fieldset>
