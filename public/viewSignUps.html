@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Club Sign-ups</title>
+
+<style>
+/* base page styling */
+body {
+    font-family: Arial;
+    background-color: #eef;
+    padding: 20px;
+}
+
+/* table layout and spacing */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+/* table cell borders and alignment */
+th, td {
+    border: 1px solid #555;
+    padding: 8px;
+    text-align: center;
+}
+
+/* table header styling */
+th {
+    background-color: lightsteelblue;
+}
+
+/* message text styling */
+#message {
+    font-weight: bold;
+    margin-top: 20px;
+}
+</style>
+
+<script>
+function loadSignups() {
+    // retrieve stored sign-up data from localstorage
+    let data = localStorage.getItem("signups");
+
+    // reference table body, total counter, and filter selection
+    let tbody = document.getElementById("tbody");
+    let total = document.getElementById("total");
+    let filter = document.getElementById("filter").value;
+
+    // clear existing table rows
+    tbody.innerHTML = "";
+    let count = 0;
+
+    // handle case when no data exists in localstorage
+    if (!data) {
+        document.getElementById("message").innerText =
+            "No sign-ups saved in localStorage.";
+        total.innerText = "0";
+        return;
+    }
+
+    // parse stored json data into usable array
+    let signups = JSON.parse(data);
+
+    // clear any previous status message
+    document.getElementById("message").innerText = "";
+
+    // loop through sign-ups and apply club filter
+    signups.forEach(s => {
+        if (filter === "ALL" || s.club === filter) {
+            let row = tbody.insertRow();              // create new table row
+            row.insertCell().innerText = s.club;      // selected club
+            row.insertCell().innerText = s.id;        // student id
+            row.insertCell().innerText = s.name;      // student name
+            row.insertCell().innerText = s.grade;     // grade level
+            row.insertCell().innerText = s.email;     // email address
+            row.insertCell().innerText = s.mobile;     // mobile number
+            row.insertCell().innerText = s.status;    // intern/extern status
+            count++;                                 // increment visible count
+        }
+    });
+
+    // show message if no sign-ups match the selected filter
+    if (count === 0) {
+        document.getElementById("message").innerText =
+            "No sign-ups found for selected club.";
+    }
+
+    // update total displayed sign-up count
+    total.innerText = count;
+}
+</script>
+</head>
+
+<body onload="loadSignups()">
+
+<h2>Club Sign-ups</h2>
+
+<label>Filter by Club:
+<select id="filter" onchange="loadSignups()">
+<option value="ALL">ALL</option>
+<option value="ASTROSOC">ASTROSOC</option>
+<option value="MATH CLUB">MATH CLUB</option>
+<option value="PSHS-MC MUN">PSHS-MC MUN</option>
+<option value="INVICTUS">INVICTUS</option>
+<option value="ANIMO CHESS CLUB">ANIMO CHESS CLUB</option>
+</select>
+</label>
+
+<table>
+<thead>
+<tr>
+<th>Club</th>
+<th>ID</th>
+<th>Fullname</th>
+<th>Grade</th>
+<th>Email</th>
+<th>Mobile</th>
+<th>Intern|Extern</th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+
+<p>Total Sign-ups: <span id="total">0</span></p>
+<p id="message"></p>
+
+<a href="Q3_3GRubidiumEspinoza.html"> Back to Sign-up Page</a>
+
+</body>
+</html>
+

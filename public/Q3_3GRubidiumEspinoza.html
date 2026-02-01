@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate Pisay Centralized Club Application Form</title>
+
+<style>
+/* general page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: blue;
+}
+
+/* main form container styling */
+form {
+    width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: lightskyblue;
+    border: 1px solid lightslategray;
+}
+
+/* grouping related form fields */
+fieldset {
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+/* title for each fieldset */
+legend {
+    font-weight: bold;
+}
+
+/* label formatting for readability */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* shared input styling */
+input, select, textarea {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+}
+
+/* textarea size control */
+textarea {
+    height: 80px;
+}
+
+/* error highlighting (reserved for validation use) */
+.error {
+    border: 2px solid red;
+    background-color: salmon;
+}
+
+/* button alignment */
+.buttons {
+    text-align: center;
+}
+
+/* button sizing and spacing */
+.buttons input, .buttons button {
+    width: 140px;
+    margin: 5px;
+}
+</style>
+
+<script>
+function confirmSubmit() {
+    // ask user for confirmation before proceeding
+    if (!confirm("Are you sure you want to submit this application form?")) {
+        return false; // stop submission if user cancels
+    }
+
+    // collect form data and store it as an object
+    let signup = {
+        id: document.querySelector("[name=id]").value,               // student ID
+        name: document.querySelector("[name=name]").value,           // full name
+        birthday: document.querySelector("[name=birthday]").value,   // birth date
+        email: document.querySelector("[name=email]").value,         // email address
+        mobile: document.querySelector("[name=mobile]").value,       // mobile number
+        grade: document.querySelector("[name=grade_level]").value,   // grade level
+        status: document.querySelector("input[name=status]:checked").value, // intern/extern
+        club: document.querySelector("[name=club]").value,           // chosen club
+        reason: document.querySelector("[name=reason]").value        // application reason
+    };
+
+    // retrieve existing signup records from localStorage
+    let signups = localStorage.getItem("signups");
+
+    // convert stored JSON string to array, or initialize empty array
+    if (signups) {
+        signups = JSON.parse(signups);
+    } else {
+        signups = [];
+    }
+
+    // add the new signup entry to the array
+    signups.push(signup);
+
+    // save updated signup list back to localStorage
+    localStorage.setItem("signups", JSON.stringify(signups));
+
+    // notify user that data was saved successfully
+    alert("Application saved successfully!");
+
+    return false; // prevent form reload and default submission
+}
+
+function goToView() {
+    // redirect user to the signup viewing page
+    window.location.href = "viewSignUps.html";
+}
+</script>
+</head>
+
+<body>
+
+<form onsubmit="return confirmSubmit();">
+
+<fieldset>
+<legend>Personal Information</legend>
+
+<label>Student ID:
+<input type="number" name="id" required></label>
+
+<label>Full Name:
+<input type="text" name="name" required></label>
+
+<label>Birthday:
+<input type="date" name="birthday" required></label>
+
+<label>Email:
+<input type="email" name="email" required></label>
+</fieldset>
+
+<fieldset>
+<legend>Organization Details</legend>
+
+<label>Mobile Phone:
+<input type="text" name="mobile" required></label>
+
+<label>Grade Level:
+<select name="grade_level" required>
+<option value="">-- Select --</option>
+<option value="7">Grade 7</option>
+<option value="8">Grade 8</option>
+<option value="9">Grade 9</option>
+<option value="10">Grade 10</option>
+<option value="11">Grade 11</option>
+<option value="12">Grade 12</option>
+</select></label>
+
+<label>Status:
+<input type="radio" name="status" value="Intern" required> Intern
+<input type="radio" name="status" value="Extern"> Extern
+</label>
+
+<label>Club:
+<select name="club" required>
+<option value="">-- Select Club --</option>
+<option value="ASTROSOC">ASTROSOC</option>
+<option value="MATH CLUB">MATH CLUB</option>
+<option value="PSHS-MC MUN">PSHS-MC MUN</option>
+<option value="INVICTUS">INVICTUS</option>
+<option value="ANIMO CHESS CLUB">ANIMO CHESS CLUB</option>
+</select></label>
+
+<label>Reason:
+<textarea name="reason" required></textarea></label>
+</fieldset>
+
+<div class="buttons">
+<input type="submit" value="Submit">
+<button type="button" onclick="goToView()">View Signups</button>
+</div>
+
+</form>
+
+</body>
+</html>
+
