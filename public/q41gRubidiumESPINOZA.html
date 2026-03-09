@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Rating</title>
+
+<style>
+body{
+    font-family: Arial;
+}
+
+.container{
+    width:400px;
+    margin:auto;
+}
+
+input, select{
+    width:100%;
+    padding:8px;
+    margin:5px 0;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:blue;
+    color:white;
+    border:none;
+}
+
+.star{
+    font-size:22px;
+    cursor:pointer;
+    color:gray;
+}
+
+.yellow{
+    color:gold;
+}
+
+.movie{
+    background:#eee;
+    padding:6px;
+    margin:6px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>Add a Movie</h3>
+
+<input id="title" placeholder="Title">
+<input id="year" placeholder="Year">
+
+<select id="genre">
+<option>Action</option>
+<option>Comedy</option>
+<option>Drama</option>
+<option>Sci-Fi</option>
+</select>
+
+<div id="stars">
+<span class="star" data-value="1">★</span>
+<span class="star" data-value="2">★</span>
+<span class="star" data-value="3">★</span>
+<span class="star" data-value="4">★</span>
+<span class="star" data-value="5">★</span>
+</div>
+
+<button onclick="addMovie()">Add Movie</button>
+
+<h3>Movie List</h3>
+<div id="movieList"></div>
+
+</div>
+<script>
+var rating = 0
+var stars = document.querySelectorAll(".star")
+
+for(var i=0;i<stars.length;i++){
+
+    stars[i].addEventListener("click",function(){
+
+        rating = this.getAttribute("data-value")
+
+        for(var j = 0; j < stars.length; j++){
+            stars[j].classList.remove("yellow")
+        }
+
+        for(var j = 0; j < rating; j++){
+            stars[j].classList.add("yellow")
+        }
+
+    })
+
+}
+
+function addMovie(){
+var title = document.getElementById("title").value
+var year = document.getElementById("year").value
+var genre = document.getElementById("genre").value
+
+var movie = {
+title: title,
+year: year,
+genre: genre,
+rating: rating
+}
+
+var movies = localStorage.getItem("movies")
+
+if(movies == null){
+movies = []
+}else{
+movies = JSON.parse(movies)
+}
+
+movies.push(movie)
+
+localStorage.setItem("movies", JSON.stringify(movies))
+
+displayMovies()
+}
+
+function displayMovies(){
+var movies = localStorage.getItem("movies")
+
+if(movies == null){
+movies = []
+}else{
+movies = JSON.parse(movies)
+}
+
+var output = ""
+
+for(var i = 0; i < movies.length; i++){
+var stars = ""
+
+for(var j = 0; j < movies[i].rating; j++){
+stars = stars + "★"
+}
+
+output = output + "<div class='movie'>" 
++ movies[i].title + " (" + movies[i].year + ") - "
++ movies[i].genre + " | Rating: "
++ "<span class='yellow'>" + stars + "</span>"
++ "</div>"
+
+}
+document.getElementById("movieList").innerHTML = output
+}
+displayMovies()
+</script>
+</body>
+</html>
