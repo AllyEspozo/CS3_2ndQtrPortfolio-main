@@ -4,53 +4,65 @@
 <title>Movie Rating</title>
 
 <style>
+/* basic style for the page */
 body{
-    font-family: Arial;
+    font-family: Arial; 
 }
 
+/* container to center everything */
 .container{
-    width:400px;
-    margin:auto;
+    width: 400px;
+    margin: auto; 
 }
 
+/* styling for inputs and dropdown */
 input, select{
-    width:100%;
-    padding:8px;
-    margin:5px 0;
+    width: 100%; 
+    padding: 8px;
+    margin: 5px 0; 
 }
 
+/* styling for the button */
 button{
-    width:100%;
-    padding:10px;
-    background:blue;
-    color:white;
-    border:none;
+    width: 100%;
+    padding: 10px;
+    background: blue; 
+    color: white; 
+    border: none;
 }
 
+/* star style for rating system */
 .star{
-    font-size:22px;
-    cursor:pointer;
-    color:gray;
+    font-size: 22px;
+    cursor: pointer; 
+    color: gray; 
 }
 
+/* when star is selected */
 .yellow{
-    color:gold;
+    color: gold; 
 }
 
+/* style for each movie entry */
 .movie{
-    background:#eee;
-    padding:6px;
-    margin:6px 0;
+    background: #eee; 
+    padding: 6px;
+    margin: 6px 0;
 }
 </style>
 </head>
 <body>
+
 <div class="container">
 <h3>Add a Movie</h3>
 
+<!-- movie title input -->
 <input id="title" placeholder="Title">
+
+<!-- movie year input -->
 <input id="year" placeholder="Year">
 
+<!-- dropdown for genre -->
 <select id="genre">
 <option>Action</option>
 <option>Comedy</option>
@@ -58,6 +70,7 @@ button{
 <option>Sci-Fi</option>
 </select>
 
+<!-- star rating system -->
 <div id="stars">
 <span class="star" data-value="1">★</span>
 <span class="star" data-value="2">★</span>
@@ -66,26 +79,39 @@ button{
 <span class="star" data-value="5">★</span>
 </div>
 
+<!-- button that runs addMovie() when clicked -->
 <button onclick="addMovie()">Add Movie</button>
 
 <h3>Movie List</h3>
+
+<!-- where movies will appear -->
 <div id="movieList"></div>
 
 </div>
+
 <script>
+
+// variable to store the selected rating
 var rating = 0
+
+// get all the star elements
 var stars = document.querySelectorAll(".star")
 
+// loop through each star
 for(var i = 0; i < stars.length; i++){
 
+    // when a star is clicked
     stars[i].addEventListener("click",function(){
 
+        // get the rating number from the star
         rating = this.getAttribute("data-value")
 
+        // remove yellow color from all stars first
         for(var j = 0; j < stars.length; j++){
             stars[j].classList.remove("yellow")
         }
 
+        // highlight stars up to the selected rating
         for(var j = 0; j < rating; j++){
             stars[j].classList.add("yellow")
         }
@@ -94,11 +120,15 @@ for(var i = 0; i < stars.length; i++){
 
 }
 
+// function to add movie to the list
 function addMovie(){
+
+// get values from inputs
 var title = document.getElementById("title").value
 var year = document.getElementById("year").value
 var genre = document.getElementById("genre").value
 
+// create a movie object
 var movie = {
 title: title,
 year: year,
@@ -106,39 +136,53 @@ genre: genre,
 rating: rating
 }
 
+// get existing movies from localStorage
 var movies = localStorage.getItem("movies")
 
+// if no movies yet, make empty array
 if(movies == null){
 movies = []
 }else{
-movies = JSON.parse(movies)
+movies = JSON.parse(movies) // convert text back to array
 }
 
+// add the new movie
 movies.push(movie)
 
+// save updated movie list
 localStorage.setItem("movies", JSON.stringify(movies))
 
+// update display
 displayMovies()
 }
 
+// function to show movies on the page
 function displayMovies(){
+
+// get movies from localStorage
 var movies = localStorage.getItem("movies")
 
+// check if empty
 if(movies == null){
 movies = []
 }else{
 movies = JSON.parse(movies)
 }
 
+// variable for building HTML output
 var output = ""
 
+// loop through all movies
 for(var i = 0; i < movies.length; i++){
-var stars = ""
 
+var stars = "" // stores star symbols
+
+// add stars depending on rating
 for(var j = 0; j < movies[i].rating; j++){
 stars = stars + "★"
 }
 
+// create movie display block
 output = output + "<div class='movie'>" 
 + movies[i].title + " (" + movies[i].year + ") - "
 + movies[i].genre + " | Rating: "
@@ -146,9 +190,14 @@ output = output + "<div class='movie'>"
 + "</div>"
 
 }
+
+// put all movies into the page
 document.getElementById("movieList").innerHTML = output
 }
+
+// run displayMovies when page loads
 displayMovies()
+
 </script>
 </body>
 </html>
