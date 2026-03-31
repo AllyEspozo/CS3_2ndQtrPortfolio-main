@@ -45,79 +45,78 @@
     <h1 style="padding: 30px">Your Name / Section Mar 2026 </h1>
   </header>
 
-  <section id="table">
-    <table> 
-      <caption> Error Logs - place errors found in the table below</caption>
-      <tr class="rColor">
-        <th> item# </th> 
-        <th> code line#<br/>CSS or JS </th> 
-        <th> Description</th>
-        <th> Correction Done</th>
-      </tr>
-      <tr>
-        <td> 1 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 2 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 3 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 4 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 5 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 6 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 7 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 8 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 9 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> 10 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
-      </tr>
-     
-    </table>
-    <hr>
-  </section>
+<section id="table">
+  <table> 
+    <caption> Error Logs - place errors found in the table below</caption>
+    <tr class="rColor">
+      <th> item# </th> 
+      <th> code line#<br/>CSS or JS </th> 
+      <th> Description</th>
+      <th> Correction Done</th>
+    </tr>
+    <tr>
+      <td> 1 </td> 
+      <td> style.css #39, CSS </td> 
+      <td>Selector written as 'nav a :hover' has an extra space, making it invalid</td>
+      <td>Changed to 'nav a:hover'</td>
+    </tr>
+    <tr>
+      <td> 2 </td> 
+      <td> style.css #32, CSS </td> 
+      <td>'nav a' uses display: block; causing links to stack vertically</td>
+      <td>Changed to display: inline-block;</td>
+    </tr>
+    <tr>
+      <td> 3 </td> 
+      <td> style.css #26-28, CSS </td> 
+      <td>'nav' has no fixed position, so it scrolls with the page</td>
+      <td>Added position: fixed; top: 0; left: 0;</td>
+    </tr>
+    <tr>
+      <td> 4 </td> 
+      <td> script.js #1, JS </td> 
+      <td>function plotPoint() had no parameters, cannot use x0, y0, x, y</td>
+      <td>Changed to function plotPoint(x0, y0, x, y)</td>
+    </tr>
+    <tr>
+      <td> 5 </td> 
+      <td> script.js #11, JS </td> 
+      <td>point.styleleft is invalid CSS property</td>
+      <td>Changed to point.style.left</td>
+    </tr>
+    <tr>
+      <td> 6 </td> 
+      <td> script.js #12, JS </td> 
+      <td>point.stylebottom is invalid CSS property</td>
+      <td>Changed to point.style.bottom</td>
+    </tr>
+    <tr>
+      <td> 7 </td> 
+      <td> style.css #55, CSS </td> 
+      <td>.point has no position, cannot be moved on the coordinate plane</td>
+      <td>Added position: absolute;</td>
+    </tr>
+    <tr>
+      <td> 8 </td> 
+      <td> script.js #30, JS </td> 
+      <td>Missing closing bracket } for plotPoint function</td>
+      <td>Added closing }</td>
+    </tr>
+    <tr>
+      <td> 9 </td> 
+      <td> style.css #7, CSS </td> 
+      <td>Multiple font-family declarations overwrite each other</td>
+      <td>Combined into font-family: 'Open Sans', 'Poppins', 'Roboto', sans-serif;</td>
+    </tr>
+    <tr>
+      <td> 10 </td> 
+      <td> script.js #2-3, JS </td> 
+      <td>in1 and out1 were used without declaration</td>
+      <td>Added var in1 = document.getElementById("in1"); var out1 = document.getElementById("out1");</td>
+    </tr>
+  </table>
+  <hr>
+</section>
   
    
   <!--- anchors for socmed site are done with image sprites -->
